@@ -1,0 +1,21 @@
+﻿{
+  "incident_id": "P1-CHK-502-001",
+  "severity": "P1",
+  "environment": "production",
+  "triggered_at_utc": "2026-02-11T08:45:00Z",
+  "services": [
+    "checkout-api",
+    "payments-service"
+  ],
+  "symptoms": [
+    "checkout-api returning intermittent 502 errors",
+    "payment attempts timing out (10–15s)",
+    "error rate ~15%",
+    "latency increased from 200ms to 4–6s"
+  ],
+  "notes": [
+    "Incident started ~15 minutes ago",
+    "Root cause unknown",
+    "Suspected cascading retries between checkout-api and payments-service"
+  ]
+}

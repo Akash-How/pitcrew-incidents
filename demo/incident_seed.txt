@@ -1,0 +1,27 @@
+﻿[PAGERDUTY] SEV-1 Incident Triggered
+Service: checkout-api (prod)
+Incident: Checkout failures + payment timeouts
+Started: 2026-02-11 10:14 IST
+Detected by: Synthetic monitoring + error budget burn
+
+Symptoms:
+- 52% of /checkout requests failing (HTTP 502/504)
+- Payment pipeline latency p95 jumped from 220ms -> 6.8s
+- Redis cluster showing split-brain warnings
+- DB connection pool exhaustion on primary (pool saturation 97%)
+
+Recent Changes:
+- DB migration applied: v2.1.4 -> v2.2.0 at 10:05 IST
+- checkout-api deploy sha: 9f3c1a at 10:07 IST
+
+Customer/Business Impact:
+- Users unable to complete checkout across web and mobile
+- Revenue-impacting outage; conversion dropped ~41% in last 20 min
+
+Allowed Actions:
+- Rollback is allowed
+- Feature flags available: CHECKOUT_V2, PAYMENT_ASYNC
+
+Notes:
+- Suspected cascading retries between checkout-api and payments-service
+- Coordinate with DB oncall before re-running migration scripts

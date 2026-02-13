@@ -1,0 +1,8 @@
+HTTP/1.1 200 OK
+content-type: application/json
+mcp-session-id: 87816798-e999-4523-8fbe-6faf2cec86d1
+content-length: 166
+Date: Wed, 11 Feb 2026 13:38:20 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+

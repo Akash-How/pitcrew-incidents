@@ -1,0 +1,5 @@
+﻿.env
+*.log
+incident*.log
+node_modules/
+dist/

@@ -1,0 +1,23 @@
+﻿prometheus.scrape "node" {
+  scrape_interval = "15s"
+
+  targets = [
+    {
+      __address__ = "node-exporter:9100",
+    },
+  ]
+
+  forward_to = [prometheus.remote_write.metrics_hosted_prometheus.receiver]
+}
+
+prometheus.remote_write "metrics_hosted_prometheus" {
+  endpoint {
+    name = "hosted-prometheus"
+    url  = "https://prometheus-prod-43-prod-ap-south-1.grafana.net/api/prom/push"
+
+    basic_auth {
+      username = env("GRAFANA_CLOUD_PROM_USERNAME")
+      password = env("GRAFANA_CLOUD_API_KEY")
+    }
+  }
+}
